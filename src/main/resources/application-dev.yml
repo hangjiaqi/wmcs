@@ -1,0 +1,45 @@
+spring:
+  datasource:
+    primary:
+      url: jdbc:mysql://192.168.1.35:3306/hjq?useUnicode=true&characterEncoding=UTF-8&useSSL=true&serverTimezone=UTC
+      username: root
+      password: 1
+      driver-class-name: com.mysql.jdbc.Driver
+    secondary:
+      url: jdbc:mysql://192.168.1.35:3306/hjq?useUnicode=true&characterEncoding=UTF-8&useSSL=true&serverTimezone=UTC
+      username: root
+      password: 1
+      driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initial-size: 5
+      max-active: 20
+      min-idle: 5
+      max-wait: 60000
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 100
+      max-open-prepared-statements: 20
+      validation-query: SELECT 1 FROM DUAL
+      validation-query-timeout: 30
+      test-on-borrow: false
+      test-on-return: false
+      test-while-idle: true
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      filter:
+        stat:
+          log-slow-sql: true
+          slow-sql-millis: 2000
+      web-stat-filter:
+        enable: true
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    database: 6
+
+
+mybatis:
+  # 重要配置
+  type-aliases-package: com.laurus.wmcs.model
+  mapper-locations: classpath:mapper/*.xml
